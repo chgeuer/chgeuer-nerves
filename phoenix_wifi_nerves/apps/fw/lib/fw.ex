@@ -1,20 +1,25 @@
 defmodule Fw do
   use Application
 
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
-  # for more information on OTP Applications
+  @wifi_opts Application.get_env(:fw, :wifi_opts)
+
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
     # Define workers and child supervisors to be supervised
     children = [
-      # worker(Fw.Worker, [arg1, arg2, arg3]),
+      worker(Nerves.InterimWiFi, ["wlan0", @wifi_opts], function: :setup),
+      worker(Fw.Ntp, []),
+      #worker(Fw.DistrubuteNode, []),
     ]
 
-    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Fw.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  def connect do
+    IO.inspect @wifi_opts
+    Nerves.InterimWiFi.setup("wlan0", @wifi_opts)
   end
 
 end
