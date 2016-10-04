@@ -30,8 +30,8 @@ defmodule Fw.Mixfile do
   def deps do
     [
       {:nerves, "~> 0.3.0"},
-      {:nerves_interim_wifi, "~> 0.1.0", only: :prod},
       {:web, in_umbrella: true},
+      {:nerves_interim_wifi, "~> 0.1.0", only: :prod},
       {:dummy_nerves, in_umbrella: true, only: [:dev, :test]}
    ]
   end

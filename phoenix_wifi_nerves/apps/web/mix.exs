@@ -6,12 +6,10 @@ defmodule Web.Mixfile do
      version: "0.0.1",
      elixir: "~> 1.3",
      elixirc_paths: elixirc_paths(Mix.env),
-
-     deps_path: "../../deps/#{@target}",
-     build_path: "../../_build/#{@target}",
+     deps_path: "../../deps",
+     build_path: "../../_build",
      config_path: "../../config/config.exs",
      lockfile: "../../mix.lock",
-
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
