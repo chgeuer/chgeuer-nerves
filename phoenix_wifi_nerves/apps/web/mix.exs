@@ -4,8 +4,14 @@ defmodule Web.Mixfile do
   def project do
     [app: :web,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.3",
      elixirc_paths: elixirc_paths(Mix.env),
+
+     deps_path: "../../deps/#{@target}",
+     build_path: "../../_build/#{@target}",
+     config_path: "../../config/config.exs",
+     lockfile: "../../mix.lock",
+
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
