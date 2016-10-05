@@ -32,7 +32,7 @@ defmodule Fw.Mixfile do
       {:nerves, "~> 0.3.0"},
       {:web, in_umbrella: true},
       {:porcelain, ">= 0.0.0" },
-      {:nerves_interim_wifi, "~> 0.1.0", only: :prod},
+      {:nerves_interim_wifi, "~> 0.1.0", in_umbrella: true, only: :prod},
       {:dummy_nerves, in_umbrella: true, only: [:dev, :test]}
    ]
   end
