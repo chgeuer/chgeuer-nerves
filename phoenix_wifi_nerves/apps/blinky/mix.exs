@@ -42,4 +42,11 @@ defmodule Blinky.Mixfile do
       {:nerves_leds, "~> 0.7.0"}
     ]
   end
+
+  def aliases(:prod) do
+      ["deps.precompile": ["nerves.precompile", "deps.precompile"],
+       "deps.loadpaths":  ["deps.loadpaths", "nerves.loadpaths"]]
+  end
+  def aliases(_), do: []
+
 end
