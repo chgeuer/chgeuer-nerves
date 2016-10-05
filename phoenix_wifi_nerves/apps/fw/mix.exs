@@ -25,7 +25,7 @@ defmodule Fw.Mixfile do
 
   defp applications(:prod), do: [:nerves_interim_wifi | general_apps]
   defp applications(_), do: general_apps
-  defp general_apps, do: [:logger, :runtime_tools, :web]
+  defp general_apps, do: [:logger,  :web] # :runtime_tools,
 
   def deps do
     [
