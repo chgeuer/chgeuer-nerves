@@ -1,5 +1,7 @@
 defmodule PhoenixWifiNerves.Mixfile do
   use Mix.Project
+  
+  @target System.get_env("NERVES_TARGET") || "rpi3"
 
   def project do
     [apps_path: "apps",
