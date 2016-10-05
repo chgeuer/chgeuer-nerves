@@ -25,7 +25,7 @@ defmodule Blinky.Mixfile do
      [mod: {Fw, []},
       applications: applications(Mix.env)]
   end
-  defp applications(:prod), do: [:elixir_ale, :nerves_leds, general_apps]
+  defp applications(:prod), do: [:elixir_ale, :nerves_leds | general_apps]
   defp applications(_), do: general_apps
   defp general_apps, do: [:logger] 
   
