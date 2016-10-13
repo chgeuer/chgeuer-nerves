@@ -21,11 +21,13 @@ defmodule Fw.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Fw, []},
-     applications: [:logger]]
+     applications: [:logger, :ui, :nerves_networking]]
   end
 
   def deps do
-    [{:nerves, "~> 0.3.0"}]
+    [{:nerves, "~> 0.3.0"},
+     {:ui, in_umbrella: true},
+     {:nerves_networking, github: "nerves-project/nerves_networking"}]
   end
 
   def system(target) do
