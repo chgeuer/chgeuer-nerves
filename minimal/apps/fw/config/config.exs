@@ -11,8 +11,6 @@ use Mix.Config
 
 # import_config "#{Mix.Project.config[:target]}.exs"
 
-
-
 config :ui, Ui.Endpoint,
   http: [port: 80],
   url: [host: "localhost", port: 80],
@@ -21,5 +19,13 @@ config :ui, Ui.Endpoint,
   server: true,
   render_errors: [accepts: ~w(html json)],
   pubsub: [name: Nerves.PubSub]
+
+config :nerves_interim_wifi, 
+  regulatory_domain: "DE"
+
+config :hello_wifi, :wlan0,
+  ssid: "schlabber",
+  key_mgmt: :"WPA-PSK",
+  psk: "secretsecret"
 
 config :logger, level: :debug

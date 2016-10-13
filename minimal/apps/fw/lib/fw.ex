@@ -10,7 +10,9 @@ defmodule Fw do
     children = [
       # worker(Fw.Worker, [arg1, arg2, arg3]),
       # worker(Task, [fn -> Nerves.Networking.setup(:eth0, [mode: "dhcp"]) end], restart: :transient),
-      worker(Task, [fn -> Nerves.InterimWiFi.setup("wlan0", key_mgmt: :"WPA-PSK", ssid: "schlabber", psk: "secret") end], restart: :transient),
+      # worker(Task, [fn -> Nerves.InterimWiFi.setup("wlan0", key_mgmt: :"WPA-PSK", ssid: "schlabber", psk: "secret") end], restart: :transient),
+
+      worker(Task, [Fw.wifisetup/0], restart: :transient),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -19,4 +21,8 @@ defmodule Fw do
     Supervisor.start_link(children, opts)
   end
 
+  defp wifisetup do
+    opts = Application.get_env(:hello_wifi, :wlan0)
+    Nerves.InterimWiFi.setup("wlan0", opts)
+  end
 end
