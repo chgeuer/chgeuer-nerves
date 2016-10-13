@@ -9,7 +9,8 @@ defmodule Fw do
     # Define workers and child supervisors to be supervised
     children = [
       # worker(Fw.Worker, [arg1, arg2, arg3]),
-      worker(Task, [fn -> Nerves.Networking.setup :eth0, [mode: "dhcp"] end], restart: :transient)
+      worker(Task, [fn -> Nerves.Networking.setup(:eth0, [mode: "dhcp"]) end], restart: :transient),
+      worker(Task, [fn -> Nerves.InterimWiFi.setup("wlan0", key_mgmt: :"WPA-PSK", ssid: "schlabber", psk: "secret") end], restart: :transient),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

@@ -5,5 +5,5 @@ config :fw, :wifi_opts,
   ssid: "schlabber",
   psk: "secret"
 
-config :nerves, :firmware,
-  fwup_conf: "config/fwup.conf"
+#config :nerves, :firmware,
+#  fwup_conf: "config/fwup.conf"
