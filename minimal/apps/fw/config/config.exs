@@ -29,3 +29,7 @@ config :hello_wifi, :wlan0,
   psk: "secret"
 
 config :logger, level: :debug
+
+#config :nerves, :firmware, 
+#  fwup_conf: "config/fwup.conf"
+
