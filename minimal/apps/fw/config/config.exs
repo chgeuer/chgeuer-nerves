@@ -26,6 +26,6 @@ config :nerves_interim_wifi,
 config :hello_wifi, :wlan0,
   ssid: "schlabber",
   key_mgmt: :"WPA-PSK",
-  psk: "secretsecret"
+  psk: "secret"
 
 config :logger, level: :debug
